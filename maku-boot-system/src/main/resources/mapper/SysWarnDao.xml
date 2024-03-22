@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="net.maku.system.dao.SysWarnDao">
+
+
+	<!--查询全部-->
+	<select id="selectAll" resultType="net.maku.system.entity.SysWarn">
+		select * from sys_warn;
+	</select>
+    <select id="selectByCondition" resultType="net.maku.system.entity.SysWarn">
+		select *
+		from sys_warn
+		where robotsn = #{robotsn};
+
+		<!-- 获取数据总数 -->
+		SELECT COUNT(*)
+		FROM sys_warn
+		WHERE robotsn = #{robotsn}
+	</select>
+    <select id="selectToday" resultType="net.maku.system.entity.SysWarn">
+		select *
+		from sys_warn
+		where savetime &gt; #{startTime} AND savetime &lt; #{endTime}
+	</select>
+
+
+</mapper>

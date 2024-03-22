@@ -1,0 +1,59 @@
+spring:
+  data:
+    redis:
+      database: 1
+      host: 172.29.128.200
+      port: 6379
+      password: csot.888
+      #timeout: 6000ms  # 连接超时时长（毫秒）]
+  cassandra:
+    contact-points: 172.29.128.199,172.29.128.200,172.29.128.201
+    port: 9042                # Cassandra 服务器端口
+    keyspace-name: csot_robot  # Cassandra Keyspace 名称
+    #username: root         # 连接 Cassandra 数据库的用户名
+    #password: root         # 连接 Cassandra 数据库的密码
+    local-datacenter: datacenter1
+    connection:
+      connect-timeout: 180000
+  datasource:
+    dynamic:
+      hikari: # Hikari 连接池全局配置
+        connection-timeout: 30000     # 等待连接池分配链接的最大时长（毫秒），超过这个时长还没有可用的连接则发生 SQLException，默认：30 秒
+        minimum-idle: 2               # 最小空闲连接数
+        maximum-pool-size: 10         # 最大连接数
+        idle-timeout: 600000          # 连接超时的最大时长（毫秒），超时则被释放（retired），默认：10 分钟
+        max-lifetime: 1800000         # 连接的生命时长（毫秒），超时而且没被使用则被释放（retired），默认： 30 分钟
+        connection-test-query: SELECT 1
+      primary: master
+      datasource:
+        master:
+          # MySQL8
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          url: jdbc:mysql://172.29.128.199:3306/csot_robot?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&nullCatalogMeansCurrent=true
+          username: p9rdsweb1
+          password: rds@2023
+          # 达梦
+          #    driver-class-name: dm.jdbc.driver.DmDriver
+          #    url: jdbc:dm://192.168.3.19:5236/maku_boot?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&nullCatalogMeansCurrent=true
+          #    username: maku_boot
+          #    password: 12345678
+          # PostgreSQL
+          #    driver-class-name: org.postgresql.Driver
+          #    url: jdbc:postgresql://192.168.3.19:5432/postgres
+          #    username: postgres
+          #    password: 123456
+
+#pagehelper:
+#  # 设置方言，此处指定 MySQL 数据库
+#  helper-dialect: mysql
+#  # 是否启动合理化，默认是 false。
+#  # 启用合理化时，如果pageNum<1会查询第一页，如果pageNum>pages（最大页数）会查询最后一页。
+#  # 禁用合理化时，如果pageNum<1或pageNum>pages会返回空数据
+#  reasonable: true
+#  # 是否支持接口参数来传递分页参数，默认false
+#  support-methods-arguments: true
+#  # 为了支持startPage(Object params)方法，增加了该参数来配置参数映射，用于从对象中根据属性名取值
+#  params: count=countSql
+#  # 默认值为 false，当该参数设置为 true 时，如果 pageSize=0 或者 RowBounds.limit = 0 就会查询出全部的结果（相当于没有执行分页查询，但是返回结果仍然是 Page 类型）
+#  page-size-zero: true
+#  autoRuntimeDialect: true

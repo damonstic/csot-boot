@@ -1,0 +1,290 @@
+create table robotserial
+(
+    id                int primary key,
+    connection_status text,
+    factory_end       text,
+    factory_type      text,
+    robotsn           text,
+    robotsn_type      text,
+    upload_time       text
+);
+
+create table robotstar_jointvel
+(
+    jointvel_robotsn         text,
+    jointvel_datetime        timestamp,
+    jointvel_axis1_err_speed double,
+    jointvel_axis2_err_speed double,
+    jointvel_axis3_err_speed double,
+    jointvel_axis4_err_speed double,
+    jointvel_axis5_err_speed double,
+    jointvel_axis6_err_speed double,
+    jointvel_axis7_err_speed double,
+    jointvel_axis8_err_speed double,
+    jointvel_savetime        text,
+    primary key (jointvel_robotsn, jointvel_datetime)
+);
+
+create table robotstar_motoroverload
+(
+    motoroverload_robotsn        text,
+    motoroverload_datetime       timestamp,
+    motoroverload_axis1_overload double,
+    motoroverload_axis2_overload double,
+    motoroverload_axis3_overload double,
+    motoroverload_axis4_overload double,
+    motoroverload_axis5_overload double,
+    motoroverload_axis6_overload double,
+    motoroverload_axis7_overload double,
+    motoroverload_axis8_overload double,
+    motoroverload_savetime       text,
+    primary key (motoroverload_robotsn, motoroverload_datetime)
+);
+
+create table robotstar_motorposition
+(
+    motorposition_robotsn        text,
+    motorposition_datetime       timestamp,
+    motorposition_axis1_position double,
+    motorposition_axis2_position double,
+    motorposition_axis3_position double,
+    motorposition_axis4_position double,
+    motorposition_axis5_position double,
+    motorposition_axis6_position double,
+    motorposition_axis7_position double,
+    motorposition_axis8_position double,
+    motorposition_savetime       text,
+    primary key (motorposition_robotsn, motorposition_datetime)
+);
+
+create table robotstar_motorrpm
+(
+    motorrpm_robotsn     text,
+    motorrpm_datetime    timestamp,
+    motorrpm_axis1_speed double,
+    motorrpm_axis2_speed double,
+    motorrpm_axis3_speed double,
+    motorrpm_axis4_speed double,
+    motorrpm_axis5_speed double,
+    motorrpm_axis6_speed double,
+    motorrpm_axis7_speed double,
+    motorrpm_axis8_speed double,
+    motorrpm_savetime    text,
+    primary key (motorrpm_robotsn, motorrpm_datetime)
+);
+
+create table robotstar_motortemp
+(
+    motortemp_robotsn    text,
+    motortemp_datetime   timestamp,
+    motortemp_axis1_temp double,
+    motortemp_axis2_temp double,
+    motortemp_axis3_temp double,
+    motortemp_axis4_temp double,
+    motortemp_axis5_temp double,
+    motortemp_axis6_temp double,
+    motortemp_axis7_temp double,
+    motortemp_axis8_temp double,
+    motortemp_savetime   text,
+    primary key (motortemp_robotsn, motortemp_datetime)
+);
+
+create table robotstar_motortorque
+(
+    motortorque_robotsn      text,
+    motortorque_datetime     timestamp,
+    motortorque_axis1_torque double,
+    motortorque_axis2_torque double,
+    motortorque_axis3_torque double,
+    motortorque_axis4_torque double,
+    motortorque_axis5_torque double,
+    motortorque_axis6_torque double,
+    motortorque_axis7_torque double,
+    motortorque_axis8_torque double,
+    motortorque_savetime     text,
+    primary key (motortorque_robotsn, motortorque_datetime)
+);
+
+create table sankyo_glassalignment
+(
+    glassalignment_robotsn         text,
+    glassalignment_datetime        timestamp,
+    glassalignment_axis1_r         double,
+    glassalignment_axis1_x         double,
+    glassalignment_axis2_r         double,
+    glassalignment_axis2_x         double,
+    glassalignment_axis3_r         double,
+    glassalignment_axis3_x         double,
+    glassalignment_axis4_r         double,
+    glassalignment_axis4_x         double,
+    glassalignment_axis5_r         double,
+    glassalignment_axis5_x         double,
+    glassalignment_axis6_r         double,
+    glassalignment_axis6_x         double,
+    glassalignment_axis7_r         double,
+    glassalignment_axis7_x         double,
+    glassalignment_axis8_r         double,
+    glassalignment_axis8_x         double,
+    glassalignment_hand            int,
+    glassalignment_position_number int,
+    glassalignment_savetime        text,
+    glassalignment_slot_number     int,
+    glassalignment_stage_type      int,
+    primary key (glassalignment_robotsn, glassalignment_datetime)
+);
+
+create table sankyo_handbend
+(
+    handbend_robotsn         text,
+    handbend_datetime        timestamp,
+    handbend_command_no      int,
+    handbend_hand            int,
+    handbend_position_number int,
+    handbend_savetime        text,
+    handbend_slot_number     int,
+    handbend_stage_type      int,
+    handbend_zpos1_diff      double,
+    handbend_zpos1_on        double,
+    handbend_zpos2_diff      double,
+    handbend_zpos2_on        double,
+    handbend_zpos_start      double,
+    primary key (handbend_robotsn, handbend_datetime)
+);
+
+create table sankyo_linetactdata
+(
+    linetactdata_robotsn         text,
+    linetactdata_datetime        timestamp,
+    linetactdata_axis1_address   int,
+    linetactdata_axis1_data      text,
+    linetactdata_axis1_velp      int,
+    linetactdata_axis2_address   int,
+    linetactdata_axis2_data      text,
+    linetactdata_axis2_velp      int,
+    linetactdata_axis3_address   int,
+    linetactdata_axis3_data      text,
+    linetactdata_axis3_velp      int,
+    linetactdata_axis4_address   int,
+    linetactdata_axis4_data      text,
+    linetactdata_axis4_velp      int,
+    linetactdata_axis5_address   int,
+    linetactdata_axis5_data      text,
+    linetactdata_axis5_velp      int,
+    linetactdata_axis6_address   int,
+    linetactdata_axis6_data      text,
+    linetactdata_axis6_velp      int,
+    linetactdata_axis7_address   int,
+    linetactdata_axis7_data      text,
+    linetactdata_axis7_velp      int,
+    linetactdata_axis8_address   int,
+    linetactdata_axis8_data      text,
+    linetactdata_axis8_velp      int,
+    linetactdata_command_code    int,
+    linetactdata_hand            int,
+    linetactdata_itime           int,
+    linetactdata_position_number int,
+    linetactdata_savetime        text,
+    linetactdata_slot_number     int,
+    linetactdata_stage_type      int,
+    linetactdata_token           text,
+    primary key (linetactdata_robotsn, linetactdata_datetime)
+);
+
+create table sankyo_motortemp
+(
+    motortemp_robotsn    text,
+    motortemp_datetime   timestamp,
+    motortemp_axis1_temp double,
+    motortemp_axis2_temp double,
+    motortemp_axis3_temp double,
+    motortemp_axis4_temp double,
+    motortemp_axis5_temp double,
+    motortemp_axis6_temp double,
+    motortemp_axis7_temp double,
+    motortemp_axis8_temp double,
+    motortemp_savetime   text,
+    primary key (motortemp_robotsn, motortemp_datetime)
+);
+
+create table sankyo_servodata
+(
+    servodata_robotsn       text,
+    servodata_datetime      timestamp,
+    servodata_axis1_address int,
+    servodata_axis1_data    text,
+    servodata_axis1_err     int,
+    servodata_axis1_posp    int,
+    servodata_axis1_space   double,
+    servodata_axis1_torque  double,
+    servodata_axis1_velp    int,
+    servodata_axis2_address int,
+    servodata_axis2_data    text,
+    servodata_axis2_err     int,
+    servodata_axis2_posp    int,
+    servodata_axis2_space   double,
+    servodata_axis2_torque  double,
+    servodata_axis2_velp    int,
+    servodata_axis3_address int,
+    servodata_axis3_data    text,
+    servodata_axis3_err     int,
+    servodata_axis3_posp    int,
+    servodata_axis3_space   double,
+    servodata_axis3_torque  double,
+    servodata_axis3_velp    int,
+    servodata_axis4_address int,
+    servodata_axis4_data    text,
+    servodata_axis4_err     int,
+    servodata_axis4_posp    int,
+    servodata_axis4_space   double,
+    servodata_axis4_torque  double,
+    servodata_axis4_velp    int,
+    servodata_axis5_address int,
+    servodata_axis5_data    text,
+    servodata_axis5_err     int,
+    servodata_axis5_posp    int,
+    servodata_axis5_space   double,
+    servodata_axis5_torque  double,
+    servodata_axis5_velp    int,
+    servodata_axis6_address int,
+    servodata_axis6_data    text,
+    servodata_axis6_err     int,
+    servodata_axis6_posp    int,
+    servodata_axis6_space   double,
+    servodata_axis6_torque  double,
+    servodata_axis6_velp    int,
+    servodata_axis7_address int,
+    servodata_axis7_data    text,
+    servodata_axis7_err     int,
+    servodata_axis7_posp    int,
+    servodata_axis7_space   double,
+    servodata_axis7_torque  double,
+    servodata_axis7_velp    int,
+    servodata_axis8_address int,
+    servodata_axis8_data    text,
+    servodata_axis8_err     int,
+    servodata_axis8_posp    int,
+    servodata_axis8_space   double,
+    servodata_axis8_torque  double,
+    servodata_axis8_velp    int,
+    servodata_savetime      text,
+    servodata_token         text,
+    primary key (servodata_robotsn, servodata_datetime)
+);
+
+create table sankyo_vacuumpressure
+(
+    vacuumpressure_robotsn         text,
+    vacuumpressure_datetime        timestamp,
+    vacuumpressure_command_no      int,
+    vacuumpressure_hand            int,
+    vacuumpressure_lower_count     int,
+    vacuumpressure_lower_data      double,
+    vacuumpressure_position_number int,
+    vacuumpressure_savetime        text,
+    vacuumpressure_slot_number     int,
+    vacuumpressure_stage_type      int,
+    vacuumpressure_upper_count     int,
+    vacuumpressure_upper_data      double,
+    primary key (vacuumpressure_robotsn, vacuumpressure_datetime)
+);
+
